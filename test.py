@@ -149,8 +149,11 @@ if __name__ == '__main__':
                 output = data_chunks.concatenate() + data['bicubic']
             else:
                 input = data['input']
-                if not args.cpu:
-                    input = input.cuda()
+                #uncomment this if you have a GPU and want to run this code on a GPU
+                
+                #if not args.cpu:
+                #    input = input.cuda()
+                
                 output = model(input,args.scale).cpu() + data['bicubic']
             sr_img = tensor2im(output, mean, stddev)
             toc = time.time()
